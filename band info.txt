@@ -1,0 +1,94 @@
+<ol = bands>
+	<li = Band1>
+		<ol = data>
+			<ol =color>black</ol>
+			<li = didgit>0</li>
+			<li = moltiplier>x10^0</li>
+			<li = tolerance>nothing</li>
+		</ol>
+	</li>
+	<li = Band2>
+		<ol = brown</ol>
+			<li = didgit>1</li>
+			<li = moltiplier>x10^1</li>
+			<li = tolerance>1</li>
+		</ol>
+	</li>
+	<li = Band3>
+		<ol = red</ol>
+			<li = didgit>2</li>
+			<li = moltiplier>x10^2</li>
+			<li = tolerance>2</li>
+		</ol>
+	</li>
+	<li = Band4>
+		<ol = orange</ol>
+			<li = didgit>3</li>
+			<li = moltiplier>x10^3</li>
+			<li = tolerance>nothing</li>
+		</ol>
+	</li><li = Band5>
+		<ol = yellow</ol>
+			<li = didgit>4</li>
+			<li = moltiplier>x10^4</li>
+			<li = tolerance>nothing</li>
+		</ol>
+	</li>
+	<li = Band6>
+		<ol = green</ol>
+			<li = didgit>5</li>
+			<li = moltiplier>x10^5</li>
+			<li = tolerance>0.5</li>
+		</ol>
+	</li>
+	<li = Band7>
+		<ol = blue</ol>
+			<li = didgit>6</li>
+			<li = moltiplier>x10^6</li>
+			<li = tolerance>0.25</li>
+		</ol>
+	</li>
+	<li = Band8>
+		<ol = violet</ol>
+			<li = didgit>7</li>
+			<li = moltiplier>x10^7</li>
+			<li = tolerance>0.1</li>
+		</ol>
+	</li>
+	<li = Band9>
+		<ol = gray</ol>
+			<li = didgit>8</li>
+			<li = moltiplier>x10^8</li>
+			<li = tolerance>0.05</li>
+		</ol>
+	</li>
+	<li = Band10>
+		<ol = white</ol>
+			<li = didgit>9</li>
+			<li = moltiplier>x10^9</li>
+			<li = tolerance>nothing</li>
+		</ol>
+	</li>
+	<li = Band11>
+		<ol = gold</ol>
+			<li = didgit>nothing</li>
+			<li = moltiplier>x10^-1</li>
+			<li = tolerance>5</li>
+		</ol>
+	</li>
+	<li = Band12>
+		<ol = silver</ol>
+			<li = didgit>nothing</li>
+			<li = moltiplier>x10^-2</li>
+			<li = tolerance>10</li>
+		</ol>
+	</li>
+	<li = Band13>
+		<ol = none</ol>
+			<li = didgit>nothing</li>
+			<li = moltiplier>nothing</li>
+			<li = tolerance>20</li>
+		</ol>
+	</li>
+	
+</ol>
