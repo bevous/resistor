@@ -66,14 +66,15 @@ namespace resistor
             this.BandOneComboBox.DataSource = BandDigitQuery;
             this.BandOneComboBox.DisplayMember = "color";
 
-            this.BandTwoComboBox.DataSource = BandDigitQuery;
+            var BandDigitQuery2 = (from band in this.Bands where band.Digit != double.MinValue select band).ToList();
+            this.BandTwoComboBox.DataSource = BandDigitQuery2;
             this.BandTwoComboBox.DisplayMember = "color";
 
             var BandMultiplierQuery = (from band in this.Bands where band.Multiplier != "NA" select band).ToList();
             this.BandThreeComboBox.DataSource = BandMultiplierQuery;
             this.BandThreeComboBox.DisplayMember = "color";
 
-            var BandToleranceQuery = (from band in this.Bands where band.Tolerance != "NA" select band).ToList();
+            var BandToleranceQuery = (from band in this.Bands where band.Tolerance != double.MinValue select band).ToList();
             this.BandFourComboBox.DataSource = BandToleranceQuery;
             this.BandFourComboBox.DisplayMember = "color";
         }
@@ -96,6 +97,8 @@ namespace resistor
             this.MyResistor.MultiplierBand = this.BandThreeComboBox.SelectedItem as Band;
 
             this.MyResistor.ToleranceBand = this.BandFourComboBox.SelectedItem as Band;
+
+            this.ResultRichTextBox.Text = this.MyResistor.GetResistorInformation();
         }
     }
 }
