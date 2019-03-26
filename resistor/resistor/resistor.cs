@@ -13,12 +13,30 @@ namespace resistor
     /// </summary>
     class Band
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Band"/> class.
+        /// </summary>
+        /// <param name="GivenColor">
+        /// The given color.
+        /// </param>
+        /// <param name="GivenDigit">
+        /// The given digit.
+        /// </param>
+        /// <param name="GivenMultiplier">
+        /// The given multiplier.
+        /// </param>
+        /// <param name="GivenTolerance">
+        /// The given tolerance.
+        /// </param>
         public Band(string GivenColor, string GivenDigit, string GivenMultiplier, string GivenTolerance)
         {
             this.Color = GivenColor;
-            this.Digit = GivenDigit;
+            
+            this.Digit = double.TryParse(GivenDigit, out var TempDigit) ? TempDigit : double.MinValue;
+
             this.Multiplier = GivenMultiplier;
-            this.Tolerance = GivenTolerance;
+            
+            this.Tolerance = double.TryParse(GivenTolerance, out var TempTolerance) ? TempTolerance : double.MinValue;
         }
 
         public Band()
@@ -27,11 +45,11 @@ namespace resistor
 
         public string Color { get; set; }
 
-        public string Digit { get; set; }
+        public double Digit { get; set;}
 
         public string Multiplier { get; set; }
 
-        public string Tolerance { get; set; } 
+        public double Tolerance { get; set; } 
     }
 
     /// <summary>
@@ -39,6 +57,8 @@ namespace resistor
     /// </summary>
     class Resistor
     {
+
+
         /// <summary>
         /// Gets or sets the band one.
         /// </summary>
@@ -58,8 +78,55 @@ namespace resistor
         /// Gets or sets the band four.
         /// </summary>
         public Band ToleranceBand { get; set; }
-   
-        public double 
+
+        private double Multiply(double digits, double Multiplier)
+        {
+            return digits * Math.Pow(10, Multiplier);
+        }
+
+        /// <summary>
+        /// The calculate min.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
+        private double CalculateMin()
+        {
+            //double Resistance = 
+        }
+
+        /// <summary>
+        /// The calculate min.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
+        private double CalculateMax()
+        {
+
+        }
+
+        /// <summary>
+        /// The calculate real.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
+        private double CalculateReal()
+        {
+
+        }
+
+        /// <summary>
+        /// The get resistor information.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        public string GetResistorInformation()
+        {
+
+        }
 
     }
 }

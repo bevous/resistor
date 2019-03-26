@@ -62,7 +62,7 @@ namespace resistor
         /// </summary>
         private void BindToControls()
         {
-            var BandDigitQuery = (from band in this.Bands where band.Digit != "NA" select band).ToList();
+            var BandDigitQuery = (from band in this.Bands where band.Digit != double.MinValue select band).ToList();
             this.BandOneComboBox.DataSource = BandDigitQuery;
             this.BandOneComboBox.DisplayMember = "color";
 
