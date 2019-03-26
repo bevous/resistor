@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace resistor
+﻿
+namespace Resistor
 {
-    using System.Diagnostics;
+    using System;
 
     /// <summary>
     /// Template for a band
@@ -39,16 +34,24 @@ namespace resistor
             this.Tolerance = double.TryParse(GivenTolerance, out var TempTolerance) ? TempTolerance : double.MinValue;
         }
 
-        public Band()
-        {
-        }
-
+        /// <summary>
+        /// Gets or sets the color.
+        /// </summary>
         public string Color { get; set; }
 
+        /// <summary>
+        /// Gets or sets the digit.
+        /// </summary>
         public double Digit { get; set;}
 
+        /// <summary>
+        /// Gets or sets the multiplier.
+        /// </summary>
         public string Multiplier { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tolerance.
+        /// </summary>
         public double Tolerance { get; set; } 
     }
 
@@ -79,9 +82,51 @@ namespace resistor
         /// </summary>
         public Band ToleranceBand { get; set; }
 
-        private double Multiply(double digits, double Multiplier)
+        /// <summary>
+        /// Gets the minimum resistance.
+        /// </summary>
+        public double MinimumResistance { get; private set; }
+
+        /// <summary>
+        /// Gets the maximum resistance.
+        /// </summary>
+        public double MaximumResistance { get; private set; }
+
+        /// <summary>
+        /// Gets the real resistance.
+        /// </summary>
+        public double RealResistance { get; private set; }
+
+        /// <summary>
+        /// Gets resistor information.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        public string GetResistorInformation()
         {
-            return digits * Math.Pow(10, Multiplier);
+            var outputString = string.Empty;
+            outputString += $"the minimum resistance is {this.MinimumResistance = this.CalculateMin():N1}{Environment.NewLine}";
+            outputString += $"the maximum resistance is {this.MaximumResistance = this.CalculateMax():N1}{Environment.NewLine}";
+            outputString += $"the real resistance is {this.RealResistance = this.CalculateReal():N1}{Environment.NewLine}";
+            return outputString;
+        }
+
+        /// <summary>
+        /// The multiply.
+        /// </summary>
+        /// <param name="Digits">
+        /// The Digits.
+        /// </param>
+        /// <param name="Multiplier">
+        /// The Multiplier.
+        /// </param>
+        /// <returns>
+        /// The <see cref="double"/>.
+        /// </returns>
+        private double Multiply(double Digits, double Multiplier)
+        {
+            return digits * Math.Pow(10, multiplier);
         }
 
         /// <summary>
@@ -130,21 +175,6 @@ namespace resistor
             resistance = resistance - (resistance * number);
             return resistance;
         }
-
-        /// <summary>
-        /// The get resistor information.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="string"/>.
-        /// </returns>
-        public string GetResistorInformation()
-        {
-            var outputString = string.Empty;
-            outputString += $"the minimum resistance is {this.CalculateMin():N1}{Environment.NewLine}";
-            outputString += $"the maximum resistance is {this.CalculateMax():N1}{Environment.NewLine}";
-            outputString += $"the real resistance is {this.CalculateReal():N1}{Environment.NewLine}";
-            return outputString;
-        }
-
+        
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace resistor
+﻿namespace Resistor
 {
     partial class Form1
     {

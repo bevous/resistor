@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace resistor
+﻿// Lewis Nordan
+// Resistor
+namespace Resistor
 {
-    using System.Xml;
-    using System.Xml.Linq;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows.Forms;
 
+    /// <summary>
+    /// The form 1.
+    /// </summary>
     public partial class Form1 : Form
     {
         /// <summary>
@@ -40,21 +37,21 @@ namespace resistor
         /// </summary>
         private void ReadBandsFile()
         {
-            var line = string.Empty;
-            System.IO.StreamReader file =
+            var Line = string.Empty;
+            System.IO.StreamReader File =
                 new System.IO.StreamReader(@"BandData.txt");
-            while ((line = file.ReadLine()) != null)
+            while ((Line = File.ReadLine()) != null)
             {
                 this.Bands.Add(
                     new Band(
-                        line,
-                        line = file.ReadLine(),
-                        line = file.ReadLine(),
-                    line = file.ReadLine()));
+                        Line,
+                        Line = File.ReadLine(),
+                        Line = File.ReadLine(),
+                    Line = File.ReadLine()));
                 
             }
 
-            file.Close();
+            File.Close();
         }
 
         /// <summary>
@@ -62,11 +59,11 @@ namespace resistor
         /// </summary>
         private void BindToControls()
         {
-            var BandDigitQuery = (from band in this.Bands where band.Digit != double.MinValue`1d).ToList();
+            var BandDigitQuery = (from band in this.Bands where band.Digit.CompareTo(double.MinValue) != 0 select band).ToList();
             this.BandOneComboBox.DataSource = BandDigitQuery;
             this.BandOneComboBox.DisplayMember = "color";
 
-            var BandDigitQuery2 = (from band in this.Bands where band.Digit != double.MinValue select band).ToList();
+            var BandDigitQuery2 = (from band in this.Bands where band.Digit.CompareTo(double.MinValue) != 0 select band).ToList();
             this.BandTwoComboBox.DataSource = BandDigitQuery2;
             this.BandTwoComboBox.DisplayMember = "color";
 
