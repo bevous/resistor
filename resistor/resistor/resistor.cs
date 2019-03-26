@@ -92,7 +92,11 @@ namespace resistor
         /// </returns>
         private double CalculateMin()
         {
-            //double Resistance = 
+            
+            double digits = this.DigitBandOne.Digit * 10 + this.DigitBandTwo.Digit;
+            double resistance = this.Multiply(digits, double.Parse(this.MultiplierBand.Multiplier[this.MultiplierBand.Multiplier.Length - 1].ToString()));
+            resistance = resistance - (resistance * this.ToleranceBand.Tolerance / 100);
+            return resistance;
         }
 
         /// <summary>
@@ -103,7 +107,10 @@ namespace resistor
         /// </returns>
         private double CalculateMax()
         {
-
+            double digits = this.DigitBandOne.Digit * 10 + this.DigitBandTwo.Digit;
+            double resistance = this.Multiply(digits, double.Parse(this.MultiplierBand.Multiplier[this.MultiplierBand.Multiplier.Length - 1].ToString()));
+            resistance = resistance + (resistance * this.ToleranceBand.Tolerance / 100);
+            return resistance;
         }
 
         /// <summary>
@@ -114,7 +121,14 @@ namespace resistor
         /// </returns>
         private double CalculateReal()
         {
-
+            var rangeUpper = this.ToleranceBand.Tolerance;
+            var rangeLower = this.ToleranceBand.Tolerance * -1;
+            Random randomTolerance = new Random();
+            var number = randomTolerance.NextDouble() * (rangeUpper - rangeLower) + rangeLower;
+            double digits = this.DigitBandOne.Digit * 10 + this.DigitBandTwo.Digit;
+            double resistance = this.Multiply(digits, double.Parse(this.MultiplierBand.Multiplier[this.MultiplierBand.Multiplier.Length - 1].ToString()));
+            resistance = resistance - (resistance * number);
+            return resistance;
         }
 
         /// <summary>
@@ -125,7 +139,11 @@ namespace resistor
         /// </returns>
         public string GetResistorInformation()
         {
-
+            var outputString = string.Empty;
+            outputString += $"the minimum resistance is {this.CalculateMin():N1}{Environment.NewLine}";
+            outputString += $"the maximum resistance is {this.CalculateMax():N1}{Environment.NewLine}";
+            outputString += $"the real resistance is {this.CalculateReal():N1}{Environment.NewLine}";
+            return outputString;
         }
 
     }
